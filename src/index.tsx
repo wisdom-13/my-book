@@ -10,16 +10,24 @@ import { BrowserRouter } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import Error from './page/Error';
 
+import create from './redux/create';
+import { Provider } from 'react-redux';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const store = create();
+
 root.render(
   <React.StrictMode>
-    <ErrorBoundary FallbackComponent={Error}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ErrorBoundary>
+    <Provider store={store}>
+      <ErrorBoundary FallbackComponent={Error}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ErrorBoundary>
+    </Provider>
   </React.StrictMode>
 );
 
