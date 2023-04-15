@@ -6,9 +6,7 @@ import 'antd/dist/reset.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import { ErrorBoundary } from 'react-error-boundary';
-import Error from './page/Error';
+
 
 import create from './redux/create';
 import { Provider } from 'react-redux';
@@ -22,11 +20,7 @@ const store = create();
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ErrorBoundary FallbackComponent={Error}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ErrorBoundary>
+      <App />
     </Provider>
   </React.StrictMode>
 );
